@@ -1,17 +1,18 @@
 const jwt = require('jsonwebtoken');
-require('dotenv').config();
+const SECRET = 'chave-secreta-bombonas';
 
-function authMiddleware(req, res, next) {
-  const header = req.headers.authorization;
-  if (!header) return res.status(401).json({ message: 'Nenhum token' });
-  const token = header.split(' ')[1];
+module.exports = (req, res, next) => {
+  const authHeader = req.headers.authorization;
+
+  if (!authHeader) return res.status(401).json({ error: 'Token não fornecido' });
+
+  const token = authHeader.split(' ')[1];
+
   try {
-    const payload = jwt.verify(token, process.env.JWT_SECRET);
-    req.user = payload; // { id, email, role }
+    const decoded = jwt.verify(token, SECRET);
+    req.user = decoded;
     next();
-  } catch (err) {
-    return res.status(401).json({ message: 'Token inválido' });
+  } catch (error) {
+    res.status(401).json({ error: 'Token inválido ou expirado' });
   }
-}
-
-module.exports = authMiddleware;
+};
