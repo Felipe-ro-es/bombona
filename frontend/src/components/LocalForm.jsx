@@ -27,14 +27,14 @@ export default function LocalForm() {
   };
 
   return (
-    <div>
-      <h2>Locais</h2>
-      <form onSubmit={handleSubmit}>
+    <div className='container'>
+      <h2 className='title'>Locais</h2>
+      <form onSubmit={handleSubmit} className='form'>
         <input type="text" placeholder="Nome do local" value={nome} onChange={e => setNome(e.target.value)} required />
         <button type="submit">Criar</button>
       </form>
-      {msg && <p>{msg}</p>}
-      <ul>
+      {msg && <p className='msg'>{msg}</p>}
+      <ul className='list'>
         {locais.map(l => <li key={l.id}>{l.nome}</li>)}
       </ul>
     </div>

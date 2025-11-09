@@ -54,9 +54,9 @@ export default function QRCodeScanner() {
   }, []);
 
   return (
-    <div>
-      <h2>Scanner QR Code</h2>
-      <video id="video" width="300" style={{ border: '1px solid black' }} />
+    <div className='container'>
+      <h2 className='title'>Scanner QR Code</h2>
+      <video id="video" width="300" className='qr-video' />
       {msg && <p>{msg}</p>}
     </div>
   );

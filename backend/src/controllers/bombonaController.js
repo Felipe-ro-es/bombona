@@ -4,6 +4,30 @@ const Local = require('../models/Local');
 
 const QRCode = require('qrcode');
 
+exports.updateLocal = async (req, res) => {
+  try {
+    const { bombonaId, localNome } = req.body;  // antes era localId
+
+    if (!bombonaId || !localNome) {
+      return res.status(400).json({ error: 'BombonaId e localNome são obrigatórios' });
+    }
+
+    const bombona = await Bombona.findByPk(bombonaId);
+    if (!bombona) return res.status(404).json({ error: 'Bombona não encontrada' });
+
+    const local = await Local.findOne({ where: { nome: localNome } });
+    if (!local) return res.status(404).json({ error: 'Local não encontrado' });
+
+    bombona.localId = local.id;  // atualiza relacionamento
+    await bombona.save();
+
+    return res.json({ message: `Bombona ${bombonaId} atualizada para o local ${localNome}` });
+  } catch (err) {
+    console.error(err);
+    return res.status(500).json({ error: 'Erro ao atualizar bombona' });
+  }
+};
+
 exports.generateQRCode = async (req, res) => {
   try {
     const { bombonaId } = req.params;

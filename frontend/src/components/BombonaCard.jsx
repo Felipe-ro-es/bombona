@@ -7,7 +7,7 @@ export default function BombonaCard({ bombona }) {
       <p><strong>Código:</strong> {bombona.codigo}</p>
       <p><strong>Descrição:</strong> {bombona.descricao}</p>
       <p><strong>Local:</strong> {bombona.localId}</p>
-      <QRCodeSVG value={bombona.id.toString()} size={128} />
+      <QRCodeSVG value={String(bombona.id)} size={128} />
     </div>
   );
 }

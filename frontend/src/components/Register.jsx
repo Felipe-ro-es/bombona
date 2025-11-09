@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import api from '../services/api';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 export default function Register() {
   const [nome, setNome] = useState('');
@@ -28,6 +28,7 @@ export default function Register() {
         <input type="email" placeholder="Email" value={email} onChange={e => setEmail(e.target.value)} required />
         <input type="password" placeholder="Senha" value={senha} onChange={e => setSenha(e.target.value)} required />
         <button type="submit">Cadastrar</button>
+         <Link to="/login"><button type='submit'>Login</button></Link>
       </form>
       {msg && <p>{msg}</p>}
     </div>

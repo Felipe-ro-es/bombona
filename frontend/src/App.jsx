@@ -8,7 +8,7 @@ import BombonaForm from './components/BombonaForm';
 import LocalForm from './components/LocalForm';
 import UpdateBombonaLocal from './components/UpdateBombonaLocal';
 import QRCodeScanner from './components/QRCodeScanner';
-
+import "./App.css"
 
 function App() {
   // Armazena o token do usuário
@@ -30,7 +30,7 @@ function App() {
       <Router>
         <Routes>
           <Route path="/login" element={<Login onLogin={handleLogin} />} />
-          <Route path="/register" element={<Register />} />
+          <Route path="/" element={<Register />} />
           <Route path="*" element={<Navigate to="/login" />} />
           <Route path="/scanner" element={<QRCodeScanner />} />
         </Routes>
@@ -42,7 +42,7 @@ function App() {
   return (
     <Router>
       <div>
-        <nav style={{ marginBottom: '20px' }}>
+        <nav style={{ marginBottom: '20px' }} className='navbar'>
           <Link to="/bombonas" style={{ marginRight: '10px' }}>Bombonas</Link>
           <Link to="/bombona/criar" style={{ marginRight: '10px' }}>Criar Bombona</Link>
           <Link to="/locais" style={{ marginRight: '10px' }}>Locais</Link>

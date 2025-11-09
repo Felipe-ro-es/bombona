@@ -19,10 +19,10 @@ export default function Bombonas() {
   }, []);
 
   return (
-    <div>
-      <h2>Bombonas</h2>
+    <div className='container'>
+      <h2 className='title'>Bombonas</h2>
       {bombonas.length === 0 && <p>Nenhuma bombona cadastrada</p>}
-      <div style={{ display: 'flex', flexWrap: 'wrap' }}>
+      <div className='bombona-wrapper'>
         {bombonas.map(b => <BombonaCard key={b.id} bombona={b} />)}
       </div>
     </div>

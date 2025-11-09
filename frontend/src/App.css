@@ -1,38 +1,220 @@
-.App {
+/* ===== RESET =====*/
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ===== GLOBAL =====*/
+:root {
+  --primary: #1976d2;
+  --primary-dark: #115293;
+  --secondary: #f5f5f5;
+  --accent: #4caf50;
+  --danger: #d32f2f;
+  --text: #333;
+  --bg: #fafafa;
+  --radius: 8px;
+  --shadow: 0px 3px 12px rgba(0, 0, 0, 0.12);
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: "Poppins", sans-serif;
+}
+
+/* ===== CONTAINER =====*/
+.container {
+  background: #fff;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 24px;
+  margin: 24px auto;
+  max-width: 900px;
+}
+
+/* ===== TITLES =====*/
+h1,
+h2,
+h3 {
+  color: var(--primary-dark);
+  margin-bottom: 12px;
+}
+
+p {
+  margin-bottom: 8px;
+}
+
+/* ===== BUTTONS =====*/
+button {
+  background: var(--primary);
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 10px 16px;
+  cursor: pointer;
+  transition: 0.25s;
+  font-weight: 500;
+}
+
+button:hover {
+  background: var(--primary-dark);
+}
+
+button.danger {
+  background: var(--danger);
+}
+
+button.danger:hover {
+  background: #b72222;
+}
+
+/* ===== INPUTS =====*/
+input,
+select {
+  width: 100%;
+  padding: 10px;
+  border-radius: var(--radius);
+  border: 1px solid #ddd;
+  background: #fff;
+  margin-bottom: 12px;
+  transition: border-color 0.25s;
+}
+
+input:focus,
+select:focus {
+  border-color: var(--primary);
+  outline: none;
+}
+
+/* ===== NAVBAR =====*/
+.navbar {
+  height: 60px;
+  background: var(--primary);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  padding: 0 24px;
+  justify-content: space-between;
+  box-shadow: var(--shadow);
+}
+
+.navbar strong {
+  font-size: 18px;
+}
+
+.navbar a {
+  color: #fff;
+  margin-right: 15px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: opacity 0.15s;
+}
+
+.navbar a:hover {
+  opacity: 0.8;
+}
+
+/* ===== GRID de BOMBONAS =====*/
+.bombona-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  justify-content: start;
+}
+
+/* ===== CARD =====*/
+.card {
+  background: #fff;
+  border-radius: var(--radius);
+  padding: 16px;
+  width: 220px;
+  border: 1px solid #e3e3e3;
+  box-shadow: var(--shadow);
+  transition: transform 0.25s;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.card:hover {
+  transform: translateY(-4px);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+/* QR central */
+.card svg {
+  margin-top: 12px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+/* ===== SCANNER PAGE =====*/
+#video {
+  border-radius: var(--radius);
+  border: 2px solid var(--primary);
+  box-shadow: var(--shadow);
+}
+
+/* ===== LISTAGEM BÁSICA =====*/
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 18px;
+}
+
+.table th,
+.table td {
+  padding: 12px;
+  border-bottom: 1px solid #ddd;
+}
+
+.table th {
+  background: var(--primary);
   color: white;
+  text-align: left;
 }
 
-.App-link {
-  color: #61dafb;
+/* ===== FORMS =====*/
+form {
+  margin-top: 12px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+form button {
+  margin-top: 6px;
+  width: 100%;
+}
+
+/* FEEDBACK */
+.success {
+  background: var(--accent);
+  color: white;
+  padding: 12px;
+  border-radius: var(--radius);
+  margin-bottom: 12px;
+}
+
+.error {
+  background: var(--danger);
+  color: white;
+  padding: 12px;
+  border-radius: var(--radius);
+  margin-bottom: 12px;
+}
+
+/* ===== RESPONSIVO =====*/
+@media (max-width: 600px) {
+  .container {
+    padding: 16px;
+    margin: 16px;
   }
-  to {
-    transform: rotate(360deg);
+
+  .bombona-grid {
+    justify-content: center;
+  }
+
+  .card {
+    width: 90%;
+  }
+
+  #video {
+    width: 90% !important;
   }
 }
+
